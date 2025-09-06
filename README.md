@@ -13,7 +13,7 @@ App web de reservas: buscar por ciudad/fechas, ver detalle, registrarse/login (B
 2. Ajustar credenciales en `src/main/resources/META-INF/persistence.xml`.
 3. Compilar: `mvn clean package -DskipTests`.
 4. Copiar `target/hotelapp.war` a `TOMCAT_HOME/webapps/`.
-5. Iniciar Tomcat y abrir `http://localhost:8080/hotelapp/app/` (ajusta puerto si cambiaste).
+5. Iniciar Tomcat y abrir `http://localhost:9090/hotelapp/app/` .
 
 ## Decisiones de diseño
 - Front Controller `/app/*`.
