@@ -1,0 +1,42 @@
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+  <display-name>HotelApp</display-name>
+
+  <!-- Filtro UTF-8 -->
+  <filter>
+    <filter-name>CharsetFilter</filter-name>
+    <filter-class>cl.tuempresa.hotelapp.filters.CharsetFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharsetFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- Filtro de autenticación (protege rutas críticas) -->
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>cl.tuempresa.hotelapp.filters.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>/app/mis-reservas</url-pattern>
+    <url-pattern>/app/do-reservar</url-pattern>
+  </filter-mapping>
+
+  <!-- Front Controller -->
+  <servlet>
+    <servlet-name>FrontController</servlet-name>
+    <servlet-class>cl.tuempresa.hotelapp.web.FrontController</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrontController</servlet-name>
+    <url-pattern>/app/*</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+</web-app>
